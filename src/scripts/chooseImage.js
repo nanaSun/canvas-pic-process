@@ -20,7 +20,6 @@ function getImageFormFile(file,callback){
 			var img = new Image();
             img.src = reader.result;
             img.onload=function(){
-            	console.log( img.width, img.height);
             	callback(img);
             }
             
@@ -28,14 +27,13 @@ function getImageFormFile(file,callback){
 	});
 }
 
-var input = document.getElementById("getImage"); 
 input.addEventListener("change",function(e){
 	for (var i = 0;i < this.files.length;i++){
 		getImageFormFile(this.files[i],function(img){
-			context.drawImage(
-				img, 
-				0, 0, img.width, img.height
-			);
+			image=img;
+			cropW=image.width
+			cropH=image.height
+			drawImage()
 		}); 
 	}
 	

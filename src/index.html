@@ -3,11 +3,26 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
+	<style type="text/css">
+		*{padding: 0px; margin:0px;}
+		canvas{
+			background: #eee;
+		}
+	</style>
 </head>
 <body>
 	<input type="file" name="getImage" id="getImage">
+	<div class="imageInfo" id="imageInfo">
+		<p class="size"></p>
+		<p class="size"></p>
+		<p class="size"></p>
+		<p class="size"></p>
+	</div>
 	<canvas id="canvas"></canvas>
 	<script type="text/javascript" src="./scripts/init.js"></script>
 	<script type="text/javascript" src="./scripts/chooseImage.js"></script>
+	<script type="text/javascript" src="./scripts/moveImage.js"></script>
+	<script type="text/javascript" src="./scripts/scaleImage.js"></script>
+	<script type="text/javascript" src="./scripts/cropImage.js"></script>
 </body>
 </html>

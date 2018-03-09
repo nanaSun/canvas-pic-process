@@ -13,6 +13,7 @@ canvas.onmousewheel=function (e) {
     console.log(tmp)
     if(tmp!==scale){
         scale=tmp;
+        context.clearRect(0,0,canvas.width,canvas.height);
         drawImage();
     }
    

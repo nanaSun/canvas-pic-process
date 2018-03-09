@@ -12,6 +12,7 @@
 </head>
 <body>
 	<input type="file" name="getImage" id="getImage">
+	<input type="hidden" name="image" id="imageData">
 	<div class="imageInfo" id="imageInfo">
 		<p class="size"></p>
 		<p class="size"></p>
@@ -19,10 +20,13 @@
 		<p class="size"></p>
 	</div>
 	<canvas id="canvas"></canvas>
+	<canvas id="saveImage"></canvas>
+	<button id="download">download</button>
 	<script type="text/javascript" src="./scripts/init.js"></script>
 	<script type="text/javascript" src="./scripts/chooseImage.js"></script>
 	<script type="text/javascript" src="./scripts/moveImage.js"></script>
 	<script type="text/javascript" src="./scripts/scaleImage.js"></script>
 	<script type="text/javascript" src="./scripts/cropImage.js"></script>
+	<script type="text/javascript" src="./scripts/saveImage.js"></script>
 </body>
 </html>

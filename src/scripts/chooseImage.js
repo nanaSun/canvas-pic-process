@@ -1,6 +1,5 @@
 function checkType(type){
 	var r=false
-	console.log(type)
 	switch (type){
 		case 'image/jpg':r=true;break;
 		case 'image/png':r=true;break;

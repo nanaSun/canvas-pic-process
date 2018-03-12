@@ -6,7 +6,18 @@
 	<style type="text/css">
 		*{padding: 0px; margin:0px;}
 		canvas{
-			background: #eee;
+			background: url(./images/bkg.png);
+		}
+		.workplace{
+			position: relative;
+		}
+		#editpanel{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top:0px;
+			left:0px;
+			background: rgba(255,255,255,0.4);
 		}
 	</style>
 </head>
@@ -19,14 +30,25 @@
 		<p class="size"></p>
 		<p class="size"></p>
 	</div>
-	<canvas id="canvas"></canvas>
+	<div class="workplace">
+		<canvas id="canvas"></canvas>
+		<div id="editpanel"></div>
+	</div>
+	
 	<canvas id="saveImage"></canvas>
 	<button id="download">download</button>
+	<div class="controlpanel">
+		<p>workplace size:</p>
+		<p>height:<input type="text" name="height"></p>
+		<p>width:<input type="text" name="width"></p>
+	</div>
 	<script type="text/javascript" src="./scripts/init.js"></script>
-	<script type="text/javascript" src="./scripts/chooseImage.js"></script>
+	<script type="text/javascript" src="./scripts/workplaceSize.js"></script>
+	<script type="text/javascript" src="./scripts/event.js"></script>
+	<!-- <script type="text/javascript" src="./scripts/chooseImage.js"></script>
 	<script type="text/javascript" src="./scripts/moveImage.js"></script>
 	<script type="text/javascript" src="./scripts/scaleImage.js"></script>
 	<script type="text/javascript" src="./scripts/cropImage.js"></script>
-	<script type="text/javascript" src="./scripts/saveImage.js"></script>
+	<script type="text/javascript" src="./scripts/saveImage.js"></script> -->
 </body>
 </html>

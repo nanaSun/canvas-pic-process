@@ -1,13 +1,21 @@
 download.addEventListener("click",function(){
+
 	saveImage();
 })
 
 function saveImage(){
-	let pixes=context.getImageData(cropPos.x,cropPos.y,cropPos.w,cropPos.h);
-	console.log(cropPos,pixes);
-	outputcanvas.width=pixes.width;
-	outputcanvas.height=pixes.height;
-	outputContext.putImageData(pixes,0,0);
+	let picpixes=context.getImageData(cropPos.x,cropPos.y,cropPos.w,cropPos.h);
+	outputcanvas.width=picpixes.width;
+	outputcanvas.height=picpixes.height;
+	outputContext.putImageData(picpixes,0,0);
+    picjson.forEach(function(e){
+        console.log(e.value, pixes*e.posX,  pixes*e.posY)
+        outputContext.fillStyle = paramInputs.fontColor.value
+        outputContext.font=paramInputs.fontSize.value+"px 微软雅黑"
+        outputContext.textAlign="start "
+        outputContext.textBaseline="top"
+        outputContext.fillText(e.value, pixes*e.posX,  pixes*e.posY)
+    })
 	
 	Download(outputcanvas.toDataURL())
 }

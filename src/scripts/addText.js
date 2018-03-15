@@ -2,18 +2,18 @@ let textInput=paramInputs.text,
 	addTextInput=document.getElementsByClassName("addText")[0]
 
 addTextInput.addEventListener("click",function() {
-	let text=document.createElement("span")
-	text.id=new Date().getTime()
-	let param={type:"text",id: text.id,value:textInput.value,posX:0,posY:0}
-	text.innerHTML=textInput.value
-	text.style.color=paramInputs.fontColor.value
-    text.style.font=paramInputs.fontSize.value+"px 微软雅黑"
-	text.style.left=0
-	text.style.top=0
+	let param={type:"text",id: new Date().getTime(),value:textInput.value,posX:0,posY:0,w:0,h:0}
+ 	context.fillStyle = paramInputs.fontColor.value
+    context.font=paramInputs.fontSize.value+"px 微软雅黑"
+    context.textAlign="start "
+    context.textBaseline="top"
+    let textSize=context.measureText(paramInputs.text.value);
+    param.w=textSize.width
+    param.h=textSize.height
+    console.log(textSize)
+    context.fillText(paramInputs.text.value, pixes*param.posX,  pixes*param.posY)
 	picjson.push(param)
-	addMoveEvent(text,param)
-	
-	editpanel.appendChild(text)
+	//addMoveEvent(text,param)
 })
 function addMoveEvent(obj,param){
 	function objMove(e){

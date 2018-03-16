@@ -8,12 +8,13 @@ addTextInput.addEventListener("click",function() {
     context.textAlign="start "
     context.textBaseline="top"
     let textSize=context.measureText(paramInputs.text.value);
-    param.w=textSize.width
-    param.h=textSize.height
-    console.log(textSize)
-    context.fillText(paramInputs.text.value, pixes*param.posX,  pixes*param.posY)
+    param.text=paramInputs.text.value
+    param.width=textSize.width
+    param.height=parseInt(paramInputs.fontSize.value)
+    param.w=textSize.width+param.posX
+    param.h=parseInt(paramInputs.fontSize.value)+param.posY
+    context.fillText(param.text, pixes*param.posX,  pixes*param.posY)
 	picjson.push(param)
-	//addMoveEvent(text,param)
 })
 function addMoveEvent(obj,param){
 	function objMove(e){
@@ -23,7 +24,6 @@ function addMoveEvent(obj,param){
 		obj.style.top=param.posY+"px"
 	}
 	function objStop(e){
-		console.log("objStop");
 		editpanel.removeEventListener("mousemove",objMove)
 		editpanel.removeEventListener("mouseup",objStop)
 		editpanel.removeEventListener("mouseleave",objStop)
@@ -33,5 +33,4 @@ function addMoveEvent(obj,param){
 		editpanel.addEventListener("mouseup",objStop)
 		editpanel.addEventListener("mouseleave",objStop)
 	})
-	
 }

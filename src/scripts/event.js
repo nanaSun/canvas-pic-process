@@ -1,22 +1,24 @@
 canvas.addEventListener("mousedown",function (e) {
-	let curX=e.clientX-canvasOffsetLeft,curY=e.clientY-canvasOffsetTop,aimObj
+	let curX=e.clientX-canvasOffsetLeft,curY=e.clientY-canvasOffsetTop,aimObj,deviation={x:0,y:0}
 	try { 
 	    picjson.forEach(function(obj){
 	    	if(obj.posX<curX&&obj.w>curX&&obj.posY<curY&&obj.h>curY){
 	    		aimObj=obj
-	    		 throw e;	
+	    		deviation.x=e.clientX-canvasOffsetLeft-aimObj.posX
+	    		deviation.y=e.clientY-canvasOffsetTop-aimObj.posY
+	    		throw e;	
 	    	}
 	    })
     }catch(e){
     	console.log(e)
     }
-    console.log(aimObj)
-    function moveobj(e){
 
-    	let moveX=e.clientX-canvasOffsetLeft,moveY=e.clientY-canvasOffsetTop
-    	
-    	aimObj.posX=moveX+aimObj.width
-    	aimObj.posY=moveY+aimObj.height
+    function moveobj(e){
+    	let moveX=e.clientX-canvasOffsetLeft-deviation.x,moveY=e.clientY-canvasOffsetTop-deviation.y
+    	aimObj.posX=moveX
+    	aimObj.posY=moveY
+    	aimObj.w=aimObj.width+aimObj.posX
+    	aimObj.h=aimObj.height+aimObj.posY
     	context.fillStyle = paramInputs.fontColor.value
 	    context.font=paramInputs.fontSize.value+"px 微软雅黑"
 	    context.textAlign="start "

@@ -10,7 +10,6 @@ function checkType(type){
 }
 function getImageFormFile(file,callback){
 	var reader = new FileReader();
-	console.log(checkType(file.type));
 	if(checkType(file.type)){
 		reader.readAsDataURL(file);
 	}
@@ -29,10 +28,9 @@ function getImageFormFile(file,callback){
 input.addEventListener("change",function(e){
 	for (var i = 0;i < this.files.length;i++){
 		getImageFormFile(this.files[i],function(img){
-			image=img;
-			cropW=image.width
-			cropH=image.height
-			drawImage()
+			let param={type:"pic",id: new Date().getTime(),image:img,posX:0,posY:0,w:img.width,h:img.height}
+			picjson.push(param)
+			updateCanvas();
 		}); 
 	}
 	

@@ -3,18 +3,21 @@ let textInput=paramInputs.text,
 
 addTextInput.addEventListener("click",function() {
 	let param={type:"text",id: new Date().getTime(),value:textInput.value,posX:0,posY:0,w:0,h:0}
- 	context.fillStyle = paramInputs.fontColor.value
-    context.font=paramInputs.fontSize.value+"px 微软雅黑"
+    param.color=paramInputs.fontColor.value
+    param.height=parseInt(paramInputs.fontSize.value)
+    param.h=parseInt(paramInputs.fontSize.value)+param.posY
+    //mesure text size
+    context.fillStyle = param.color
+    context.font=param.height+"px 微软雅黑"
     context.textAlign="start "
     context.textBaseline="top"
-    let textSize=context.measureText(paramInputs.text.value);
-    param.text=paramInputs.text.value
+    let textSize=context.measureText(param.value);
     param.width=textSize.width
-    param.height=parseInt(paramInputs.fontSize.value)
     param.w=textSize.width+param.posX
-    param.h=parseInt(paramInputs.fontSize.value)+param.posY
-    context.fillText(param.text, pixes*param.posX,  pixes*param.posY)
+    
+   
 	picjson.push(param)
+	updateCanvas();
 })
 function addMoveEvent(obj,param){
 	function objMove(e){

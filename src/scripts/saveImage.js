@@ -5,19 +5,7 @@ download.addEventListener("click",function(){
 
 function saveImage(){
 	let picpixes=context.getImageData(cropPos.x,cropPos.y,cropPos.w,cropPos.h);
-	outputcanvas.width=picpixes.width;
-	outputcanvas.height=picpixes.height;
-	outputContext.putImageData(picpixes,0,0);
-    picjson.forEach(function(e){
-        console.log(e.value, pixes*e.posX,  pixes*e.posY)
-        outputContext.fillStyle = paramInputs.fontColor.value
-        outputContext.font=paramInputs.fontSize.value+"px 微软雅黑"
-        outputContext.textAlign="start "
-        outputContext.textBaseline="top"
-        outputContext.fillText(e.value, pixes*e.posX,  pixes*e.posY)
-    })
-	
-	Download(outputcanvas.toDataURL())
+	Download(canvas.toDataURL())
 }
 
 function Download(imgdata){

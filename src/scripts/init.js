@@ -8,7 +8,6 @@ let input = document.getElementById("getImage"),image=null;
 let paramInputs=document.getElementsByTagName("input")
 let imageData = document.getElementById("imageData")
 let download = document.getElementById("download")
-let outputcanvas=document.getElementById("saveImage"); 
 let canvas = document.getElementById("canvas"); 
 let editpanel = document.getElementById("editpanel"); 
 let workplace = document.getElementsByClassName("workplace")[0];
@@ -16,7 +15,6 @@ let canvasOffsetTop=workplace.offsetTop,canvasOffsetLeft=workplace.offsetLeft;
 canvas.width=size;
 canvas.height=size*9/16;
 let context = canvas.getContext("2d");
-let outputContext=outputcanvas.getContext("2d");
 context.fillStyle = "#f00"; 
 context.fillRect(0,0,10,10); 
 context.beginPath(); 
@@ -24,10 +22,3 @@ context.arc(5, 5, 5, 0, 2*Math.PI, true);
 context.fillStyle = "#00f"; // Set blue fill
 context.fill(); // Fill the path
 
-function drawImage() {
-	
-    context.drawImage(
-        image, 
-        initX, initY, image.width*scale, image.height*scale,
-    );
-}

@@ -28,7 +28,7 @@ function getImageFormFile(file,callback){
 input.addEventListener("change",function(e){
 	for (var i = 0;i < this.files.length;i++){
 		getImageFormFile(this.files[i],function(img){
-			let param={type:"pic",id: new Date().getTime(),image:img,posX:0,posY:0,w:img.width,h:img.height}
+			let param={type:"pic",id: new Date().getTime(),image:img,posX:0,posY:0,w:img.width,h:img.height,width:img.width,height:img.height}
 			picjson.push(param)
 			updateCanvas();
 		}); 

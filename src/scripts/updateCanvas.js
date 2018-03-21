@@ -15,5 +15,12 @@ function updateCanvas(){
 		    );
 	    }
     })
+    if(curobj!==null){
+    	context.beginPath();
+		context.lineWidth="1";
+    	context.strokeStyle="blue";
+    	context.rect(curobj.posX,curobj.posY,curobj.width,curobj.height);
+		context.stroke();
+    }
     
 }

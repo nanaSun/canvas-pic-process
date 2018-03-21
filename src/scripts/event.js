@@ -1,28 +1,28 @@
 canvas.addEventListener("mousedown",function (e) {
-	let curX=e.clientX-canvasOffsetLeft,curY=e.clientY-canvasOffsetTop,aimObj,deviation={x:0,y:0}
+    curobj=null
+    updateCanvas()
+	let curX=e.clientX-canvasOffsetLeft,curY=e.clientY-canvasOffsetTop,deviation={x:0,y:0}
 	try { 
         let obj
         for(let i=picjson.length;i--;i>=0){
             obj=picjson[i]
             if(obj.posX<curX&&obj.w>curX&&obj.posY<curY&&obj.h>curY){
-                aimObj=obj
-                deviation.x=e.clientX-canvasOffsetLeft-aimObj.posX
-                deviation.y=e.clientY-canvasOffsetTop-aimObj.posY
+                curobj=obj
+                deviation.x=e.clientX-canvasOffsetLeft-curobj.posX
+                deviation.y=e.clientY-canvasOffsetTop-curobj.posY
                 break;
             }
         }
     }catch(e){
     	console.log(e)
     }
-
     function moveobj(e){
-        if(aimObj.type==="text"){
-        	let moveX=e.clientX-canvasOffsetLeft-deviation.x,moveY=e.clientY-canvasOffsetTop-deviation.y
-        	aimObj.posX=moveX
-        	aimObj.posY=moveY
-        	aimObj.w=aimObj.width+aimObj.posX
-        	aimObj.h=aimObj.height+aimObj.posY
-        }
+        if(curobj===null) return
+        let moveX=e.clientX-canvasOffsetLeft-deviation.x,moveY=e.clientY-canvasOffsetTop-deviation.y
+    	curobj.posX=moveX
+    	curobj.posY=moveY
+    	curobj.w=curobj.width+curobj.posX
+    	curobj.h=curobj.height+curobj.posY
     	updateCanvas()
     }
     function removeListener(){

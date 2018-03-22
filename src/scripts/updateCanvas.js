@@ -20,6 +20,8 @@ function updateCanvas(){
 		context.lineWidth="1";
     	context.strokeStyle="blue";
     	context.rect(curobj.posX,curobj.posY,curobj.width,curobj.height);
+    	context.lineWidth="8";
+    	context.rect(curobj.w,curobj.h,8,8);
 		context.stroke();
     }
     

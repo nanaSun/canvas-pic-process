@@ -1,21 +1,35 @@
 canvas.addEventListener("mousedown",function (e) {
-    curobj=null
-    updateCanvas()
+    
 	let curX=e.clientX-canvasOffsetLeft,curY=e.clientY-canvasOffsetTop,deviation={x:0,y:0}
-	try { 
-        let obj
-        for(let i=picjson.length;i--;i>=0){
-            obj=picjson[i]
-            if(obj.posX<curX&&obj.w>curX&&obj.posY<curY&&obj.h>curY){
-                curobj=obj
-                deviation.x=e.clientX-canvasOffsetLeft-curobj.posX
-                deviation.y=e.clientY-canvasOffsetTop-curobj.posY
-                break;
-            }
-        }
-    }catch(e){
-    	console.log(e)
+	if(curobj){
+        console.log(curobj.w,curobj.h,curX,curY)
     }
+    
+    if(curobj&&curobj.w<=curX&&curobj.w+8>=curX&&curobj.h<=curY&&curobj.h+8>=curY){
+        // curobj=obj
+        // deviation.x=e.clientX-canvasOffsetLeft-curobj.posX
+        // deviation.y=e.clientY-canvasOffsetTop-curobj.posY
+        // break;
+        console.log("changeSize")
+        return;
+    }else{
+        curobj=null
+        try { 
+            let obj
+            for(let i=picjson.length;i--;i>=0){
+                obj=picjson[i]
+                if(obj.posX<curX&&obj.w>curX&&obj.posY<curY&&obj.h>curY){
+                    curobj=obj
+                    deviation.x=e.clientX-canvasOffsetLeft-curobj.posX
+                    deviation.y=e.clientY-canvasOffsetTop-curobj.posY
+                    break;
+                }
+            }
+        }catch(e){
+        	console.log(e)
+        }
+    }
+    updateCanvas()
     function moveobj(e){
         if(curobj===null) return
         let moveX=e.clientX-canvasOffsetLeft-deviation.x,moveY=e.clientY-canvasOffsetTop-deviation.y

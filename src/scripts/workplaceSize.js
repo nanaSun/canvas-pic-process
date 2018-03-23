@@ -1,5 +1,5 @@
-let workplaceWidth=size,
-	workplaceHeight=size*9/16
+let workplaceWidth=480,
+	workplaceHeight=480*9/16
 
 let workplaceHeightInput=paramInputs.height,
 	workplaceWidthInput=paramInputs.width
@@ -12,14 +12,17 @@ canvas.style.width=workplaceWidth+"px"
 
 workplaceHeightInput.addEventListener("change",function(e) {
 	canvas.height=workplaceHeightInput.value
-	keepWorkplaceSize()
+	keepWorkplaceSize("height")
 })
 workplaceWidthInput.addEventListener("change",function(e) {
 	canvas.width=workplaceWidthInput.value
-	keepWorkplaceSize()
+	keepWorkplaceSize("width")
 })
 
-function keepWorkplaceSize(){
-	pixes=workplaceWidth/workplaceWidthInput.value
-	canvas.style.height=workplaceWidth/workplaceWidthInput.value*workplaceHeightInput.value+"px"
+function keepWorkplaceSize(type){
+	if(type==="width"){
+		canvas.style.width=pixes*workplaceWidthInput.value+"px"
+	}else{
+		canvas.style.height=pixes*workplaceHeightInput.value+"px"
+	}
 }

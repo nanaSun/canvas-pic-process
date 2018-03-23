@@ -9,7 +9,6 @@ function updateCanvas(){
 		    context.textBaseline="top"
 		    context.fillText(aimObj.value, pixes*aimObj.posX,  pixes*aimObj.posY)
 	    }else{
-
 	    	context.drawImage(
 		        aimObj.image, 
 		        0, 0, aimObj.image.width, aimObj.image.height,

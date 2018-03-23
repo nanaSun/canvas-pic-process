@@ -9,9 +9,11 @@ function updateCanvas(){
 		    context.textBaseline="top"
 		    context.fillText(aimObj.value, pixes*aimObj.posX,  pixes*aimObj.posY)
 	    }else{
+
 	    	context.drawImage(
 		        aimObj.image, 
-		        pixes*aimObj.posX,  pixes*aimObj.posY, aimObj.image.width, aimObj.image.height,
+		        0, 0, aimObj.image.width, aimObj.image.height,
+		        pixes*aimObj.posX,  pixes*aimObj.posY, aimObj.width, aimObj.height
 		    );
 	    }
     })
@@ -20,6 +22,9 @@ function updateCanvas(){
 		context.lineWidth="1";
     	context.strokeStyle="blue";
     	context.rect(curobj.posX,curobj.posY,curobj.width,curobj.height);
+		context.stroke();
+		context.beginPath();
+    	context.strokeStyle="green";
     	context.lineWidth="8";
     	context.rect(curobj.w,curobj.h,8,8);
 		context.stroke();

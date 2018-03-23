@@ -5,8 +5,8 @@ function updateCanvas(){
 		if(aimObj.type==="text"){
 	    	context.fillStyle = aimObj.color
 		    context.font=aimObj.height+"px 微软雅黑"
-		    context.textAlign="start "
-		    context.textBaseline="top"
+		    context.textAlign=aimObj.textAlign
+		    context.textBaseline=aimObj.textBaseline
 		    context.fillText(aimObj.value, pixes*aimObj.posX,  pixes*aimObj.posY)
 	    }else{
 	    	context.drawImage(

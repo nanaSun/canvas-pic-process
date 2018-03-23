@@ -7,10 +7,14 @@ addTextInput.addEventListener("click",function() {
     param.height=parseInt(paramInputs.fontSize.value)
     param.h=parseInt(paramInputs.fontSize.value)+param.posY
     //mesure text size
-    context.fillStyle = param.color
+    param.fillStyle = param.color
+    param.font=param.height+"px 微软雅黑"
+    param.textAlign="start "
+    param.textBaseline="top"
+    //测宽度
     context.font=param.height+"px 微软雅黑"
-    context.textAlign="start "
-    context.textBaseline="top"
+    context.textAlign=param.textAlign
+    context.textBaseline=param.textBaseline
     let textSize=context.measureText(param.value);
     param.width=textSize.width
     param.w=textSize.width+param.posX

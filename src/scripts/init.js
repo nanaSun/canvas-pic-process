@@ -10,6 +10,7 @@ let imageData = document.getElementById("imageData")
 let download = document.getElementById("download")
 let canvas = document.getElementById("canvas"); 
 let editpanel = document.getElementById("editpanel"); 
+let managerPanel= document.getElementById("managerElements");
 let workplace = document.getElementsByClassName("workplace")[0];
 let canvasOffsetTop=workplace.offsetTop,canvasOffsetLeft=workplace.offsetLeft;
 canvas.width=480;

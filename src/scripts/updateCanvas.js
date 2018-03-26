@@ -28,5 +28,6 @@ function updateCanvas(){
     	context.rect(curobj.w,curobj.h,8,8);
 		context.stroke();
     }
+    managerElements();
     
 }
